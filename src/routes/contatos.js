@@ -25,6 +25,20 @@ router.get('/', function(req, res, next){
 router.get('/:id', function(req, res, next){
     const contatolocalizado=contatos.find(item => 
         item.id === Number(req.params.id));
+        if (!contatolocalizado) {
+            return res.status(404).json({msg:"nao achei o contato!"})
+        }
     res.json(contatolocalizado);
 });
+
+router.post('/', function(req, res, next) {
+    const novoContato = {
+        id: contatos.length +1,
+        nome : req.body.nome,
+        fone : req.body.fone,
+    };
+    contatos.push(novoContato);
+    res.status(201).json(novoContato);
+});
+
 module.exports = router;
