@@ -19,8 +19,12 @@ const contatos = [{
 ];
 
 router.get('/', function(req, res, next){
-    const contato=contatos.find(item => item.id)
     res.json(contatos);
 });
 
+router.get('/:id', function(req, res, next){
+    const contatolocalizado=contatos.find(item => 
+        item.id === Number(req.params.id));
+    res.json(contatolocalizado);
+});
 module.exports = router;
