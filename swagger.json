@@ -1,0 +1,77 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Filmes API",
+        "deion": "API Rest de Filmes",
+        "version": "0.0.1"
+    },
+    "paths": {
+        "/categoria": {
+            "deion": "Categoria dos filmes",
+            "post": {
+                "deion": "Cria uma nova categoria",
+                "requestBody" : {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "propertiers": {
+                                    "disciplina": {
+                                        "type": "object",
+                                        "properties": {
+                                            "codigo": {
+                                                "type": "string",
+                                                "example": "001"
+                                            },
+                                            "genero": {
+                                                "type": "string",
+                                                "example": "Terror"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "deion": "Categoria Criada",
+                        "content": {
+                        }
+                    }
+                }
+            }
+        },
+        "/categoria/{id}": {
+            "get": {
+                "deion": "Exibe o Categoria por id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "deion": "Sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "deion": "Não encontrado"
+                    }
+                }
+            }
+        }
+    }
+}

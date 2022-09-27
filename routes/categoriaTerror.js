@@ -21,7 +21,7 @@ router.get('/:id', (req,res)=>{
     const terrorId= filmesTerror.find(itemm=>
         itemm.id===Number(req.params.id));
         if(!terrorId){
-            return res.status(404).json({msg:"nao encontrei o"})
+            return res.status(404).json({msg:"nao encontrei o filme"})
         }
     res.json(terrorId)
 })
