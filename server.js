@@ -2,12 +2,30 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+const swaggerDocs = require('./swagger.json')
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+const swaggerJsdoc = require('swagger-jsdoc');
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+const swaggerOptions = {
+  swaggerDefinition:{
+    info:{
+      title:'Meus filmes',
+      description: "varios filmes",
+      contacct : {
+        name: "mateus"
+      },
+      servers: ['http://loccalhost:5000']
+    }
+  },
+  apis: [".routes.*.js"]
+};
+
+const swaggerDocument = swaggerJsdoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use(express.json());
+
 
 app.get('/', (res,req)=>{
   res.json({msg:"bem vindo ao app"})
