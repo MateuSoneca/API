@@ -1,77 +1,57 @@
 {
-    "openapi": "3.0.3",
+    "swagger": "2.0",
     "info": {
-        "title": "Filmes API",
-        "deion": "API Rest de Filmes",
-        "version": "0.0.1"
+      "title": "API dos IESB",
+      "description": "Essa api e muito doida",
+      "version": "1.0"
     },
-    "paths": {
-        "/categoria": {
-            "deion": "Categoria dos filmes",
-            "post": {
-                "deion": "Cria uma nova categoria",
-                "requestBody" : {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "propertiers": {
-                                    "disciplina": {
-                                        "type": "object",
-                                        "properties": {
-                                            "codigo": {
-                                                "type": "string",
-                                                "example": "001"
-                                            },
-                                            "genero": {
-                                                "type": "string",
-                                                "example": "Terror"
-                                            }
-                                        }
+    "servers":[
+        {
+            "url":"http://localhost:3000/v1",
+            "description":"API de test"
+        }
+    ],
+    "paths":{
+        "/filmes":{
+            "post":{
+                "summary": "cadastro de filmes",
+                "description":"essa rota adiciona filmes",
+                "tag":["Filmes"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref":"#/components/schemas/filmes"
+                            },
+                            "exemples":{
+                                "filmes":{
+                                    "value":{
+                                        "name":"o irlandes",
+                                        "id": "2"
+
                                     }
                                 }
                             }
                         }
                     }
-                },
-                "responses": {
-                    "201": {
-                        "deion": "Categoria Criada",
-                        "content": {
-                        }
-                    }
                 }
             }
-        },
-        "/categoria/{id}": {
-            "get": {
-                "deion": "Exibe o Categoria por id",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "number"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "deion": "Sucesso",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/"
-                                }
-                            }
-                        }
+        }
+    },
+    "components":{
+        "schemas":{
+            "filmes":{
+                "type":"object",
+                "properties":{
+                    "name":{
+                        "type":"string"
                     },
-                    "404": {
-                        "deion": "Não encontrado"
+                    "id":{
+                        "type":"string"
                     }
                 }
             }
         }
-    }
-}
+    },
+    "response":{}
+ }

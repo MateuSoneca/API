@@ -1,5 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const bodyParser = require('body-parser');
+const { application } = require("express");
+
+application.use(bodyParser.json());
+
 
 let categorias = [
     {
@@ -27,6 +32,7 @@ router.get('/:id',function(req,res,next){
 })
 
 
+
 router.post('/', (req, res,next)=>{
     const id= categorias.length +1;
     const {nome}= req.body
@@ -49,20 +55,17 @@ router.post('/', (req, res,next)=>{
 })
 
 router.put('/:id', function(req,res,next){
-    const categoriaMudar=categorias.find(categorias=>
-        categorias.id === Number(req.params.id));
-        if(!categoriaMudar){
-            return res.status(404).json({msg:'nao existe essa categoria'})
-        }
-        categoriaMudar.nome = req.body.nome;
-        res.json(categoriaMudar).status(204).end();
+    const id = req.params.id;
+    const nome = req.body.nome;
+    let novo = categorias.filter(value=>value.id==id);
+    novo[0].nome=nome;
+    res.json(novo[0]);
 })
-
 
 router.delete('/:id', function(req,res){
     const id = req.params.id
-    remover = categorias.filter(value=> value.id==id);
-    res.json(remover[0])
+    categorias = categorias.filter(value=> value.id!=id);
+    res.json(categorias)
 })
 
 module.exports = router
