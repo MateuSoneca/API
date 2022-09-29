@@ -15,7 +15,7 @@ const swaggerOptions = {
       contacct : {
         name: "mateus"
       },
-      servers: ['http://loccalhost:5000']
+      servers: ['http://localhost:5000']
     }
   },
   apis: [".routes.*.js"]

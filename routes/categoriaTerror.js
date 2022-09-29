@@ -42,7 +42,6 @@ router.post('/', (req, res,next)=>{
             i=filmesTerror.length
             return res.status(400).json({msg:"nao foi possivel adicionar!"})
         }else{
-            console.log("da pra adicionar")
             filmesTerror.push(novCategoria)
             i=filmesTerror.length
         }

@@ -46,7 +46,6 @@ router.post('/', (req, res,next)=>{
             i=categorias.length
             return res.status(400).json({msg:"nao foi possivel adicionar!"})
         }else{
-            console.log("da pra adicionar")
             categorias.push(novCategoria)
             i=categorias.length
         }

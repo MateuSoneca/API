@@ -11,7 +11,7 @@
     "servers": [
         {
             "url": "http://localhost:3000/v1",
-            "description":"api de teste"
+            "description":"api de filmes"
         }
     ],
     "paths":{
@@ -39,11 +39,17 @@
                 }
             },
             "responses" : {
+                "200":{
+                    "description" :  "OK"
+                },
                 "401": {
                     "description" : "Unauthorized"
                 },
                 "400" : {
-                    
+                    "description" : "Não foi possivel adicionar!"
+                },
+                "404":{
+                    "description" : "Não foi nao achei a categoria!"
                 }
             }
         }
