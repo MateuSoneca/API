@@ -42,6 +42,12 @@
                 "200":{
                     "description" :  "OK"
                 },
+                "201":{
+                    "description" : "Create"
+                },
+                "202":{
+                    "description" : "Accepted"
+                },
                 "401": {
                     "description" : "Unauthorized"
                 },

@@ -20,6 +20,7 @@ let categorias = [
 
 router.get('/', (req,res)=>{
     res.send(categorias)
+    res.status(200)
 })
 
 router.get('/:id',function(req,res,next){
@@ -29,6 +30,7 @@ router.get('/:id',function(req,res,next){
             return res.status(404).json({msg:"nao achei a categoria"})
         }
         res.json(categoriaLoc)
+        res.status(200)
 })
 
 
@@ -48,6 +50,7 @@ router.post('/', (req, res,next)=>{
         }else{
             categorias.push(novCategoria)
             i=categorias.length
+            res.status(201)
         }
     }
     res.send(categorias)
@@ -59,12 +62,14 @@ router.put('/:id', function(req,res,next){
     let novo = categorias.filter(value=>value.id==id);
     novo[0].nome=nome;
     res.json(novo[0]);
+    res.status(201)
 })
 
 router.delete('/:id', function(req,res){
     const id = req.params.id
     categorias = categorias.filter(value=> value.id!=id);
     res.json(categorias)
+    res.status(202)
 })
 
 module.exports = router

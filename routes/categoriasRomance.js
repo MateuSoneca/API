@@ -15,6 +15,7 @@ let romance = [
 
 router.get('/',(req,res)=>{
     res.json(romance)
+    es.status(200)
 })
 
 router.get('/:id',function(req,res,next){
@@ -24,6 +25,7 @@ router.get('/:id',function(req,res,next){
             return res.status(404).json({msg:"nao achei a categoria"})
         }
         res.json(categoriaLoc)
+        es.status(200)
 })
 
 
@@ -44,6 +46,7 @@ router.post('/', (req, res,next)=>{
             console.log("da pra adicionar")
             romance.push(novCategoria)
             i=romance.length
+            res.status(201)
         }
     }
     res.send(romance)
@@ -55,12 +58,14 @@ router.put('/:id', function(req,res,next){
     let novo = romance.filter(value=>value.id==id);
     novo[0].nome=nome;
     res.json(novo[0]);
+    res.status(201)
 })
 
 router.delete('/:id', function(req,res){
     const id = req.params.id
     romance = romance.filter(value=> value.id!=id);
     res.json(romance)
+    res.status(202)
 })
 
 module.exports= router
