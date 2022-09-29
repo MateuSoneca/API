@@ -11,15 +11,69 @@
     "servers": [
         {
             "url": "http://localhost:3000/v1",
-            "description":"api de filmes"
+            "description":"api de teste"
         }
     ],
     "paths":{
         "/categorias": {
+        "get":{
+            "summary": "pegar todos os filmes",
+            "description" : "metodo para listar todos os filmes",
+            "tags" : ["categorias"],
+            "parameters":[
+                {
+                "in": "query",
+                "name": "o nome do filme",
+                "description": "nome do filme",
+                "required":"true"
+                }
+            ],
+            "responses":{
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "delete":{
+            "summary": "pegar todos os filmes",
+            "description" : "metodo para listar todos os filmes",
+            "tags" : ["categorias"],
+            "parameters":[
+                {
+                "in": "query",
+                "name": "o nome do filme",
+                "description": "nome do filme",
+                "required":"true"
+                }
+            ],
+            "responses":{
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "post": {
             "summary": "Cadastro de categorias",
             "description": "essa rota cadastra novas categorias",
-            "tagas": ["categorias"],
+            "tags": ["categorias"],
             "requestBody":{
                 "content": {
                     "application/json": {
@@ -52,10 +106,488 @@
                     "description" : "Unauthorized"
                 },
                 "400" : {
-                    "description" : "Não foi possivel adicionar!"
+                    "description": "filmme ja existe"
                 },
-                "404":{
-                    "description" : "Não foi nao achei a categoria!"
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "put": {
+            "summary": "Cadastro de categorias",
+            "description": "essa rota cadastra novas categorias",
+            "tags": ["categorias"],
+            "requestBody":{
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/categorias"
+                        },
+                        "examples" :{
+                            "filmes" : {
+                                "value": {
+                                    "name": "o nome do filme",
+                                    "id": "1",
+                                    "ano": "1888"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses" : {
+                "401": {
+                    "description" : "Unauthorized"
+                },
+                "400" : {
+                    "description": "filmme ja existe"
+                },
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/romance": {
+        "get":{
+            "summary": "pegar todos os filmes",
+            "description" : "metodo para listar todos os filmes",
+            "tags" : ["romance"],
+            "parameters":[
+                {
+                "in": "query",
+                "name": "o nome do filme",
+                "description": "nome do filme",
+                "required":"true"
+                }
+            ],
+            "responses":{
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "delete":{
+            "summary": "pegar todos os filmes",
+            "description" : "metodo para listar todos os filmes",
+            "tags" : ["romance"],
+            "parameters":[
+                {
+                "in": "query",
+                "name": "o nome do filme",
+                "description": "nome do filme",
+                "required":"true"
+                }
+            ],
+            "responses":{
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "post": {
+            "summary": "Cadastro de filmes de romancce",
+            "description": "essa rota edita a categoria romance",
+            "tags": ["romance"],
+            "requestBody":{
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/categorias"
+                        },
+                        "examples" :{
+                            "filmes" : {
+                                "value": {
+                                    "name": "o nome do filme",
+                                    "id": "1",
+                                    "ano": "1888"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses" : {
+                "401": {
+                    "description" : "Unauthorized"
+                },
+                "400" : {
+                    "description": "filme ja existe"
+                },
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "put": {
+            "summary": "Cadastro de categorias",
+            "description": "essa rota cadastra novas categorias",
+            "tags": ["romance"],
+            "requestBody":{
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/categorias"
+                        },
+                        "examples" :{
+                            "filmes" : {
+                                "value": {
+                                    "name": "o nome do filme",
+                                    "id": "1",
+                                    "ano": "1888"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses" : {
+                "401": {
+                    "description" : "Unauthorized"
+                },
+                "400" : {
+                    "description": "filmme ja existe"
+                },
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/terror": {
+        "get":{
+            "summary": "pegar todos os filmes",
+            "description" : "metodo para listar todos os filmes",
+            "tags" : ["terror"],
+            "parameters":[
+                {
+                "in": "query",
+                "name": "o nome do filme",
+                "description": "nome do filme",
+                "required":"true"
+                }
+            ],
+            "responses":{
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "delete":{
+            "summary": "pegar todos os filmes",
+            "description" : "metodo para listar todos os filmes",
+            "tags" : ["terror"],
+            "parameters":[
+                {
+                "in": "query",
+                "name": "o nome do filme",
+                "description": "nome do filme",
+                "required":"true"
+                }
+            ],
+            "responses":{
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "post": {
+            "summary": "Cadastro de filmes de terror",
+            "description": "essa rota edita a categoria terror",
+            "tags": ["terror"],
+            "requestBody":{
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/categorias"
+                        },
+                        "examples" :{
+                            "filmes" : {
+                                "value": {
+                                    "name": "o nome do filme",
+                                    "id": "1",
+                                    "ano": "1888"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses" : {
+                "401": {
+                    "description" : "Unauthorized"
+                },
+                "400" : {
+                    "description": "filme ja existe"
+                },
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "put": {
+            "summary": "Cadastro de categorias",
+            "description": "essa rota cadastra novas categorias",
+            "tags": ["terror"],
+            "requestBody":{
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/categorias"
+                        },
+                        "examples" :{
+                            "filmes" : {
+                                "value": {
+                                    "name": "o nome do filme",
+                                    "id": "1",
+                                    "ano": "1888"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses" : {
+                "401": {
+                    "description" : "Unauthorized"
+                },
+                "400" : {
+                    "description": "filmme ja existe"
+                },
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/comedia": {
+        "get":{
+            "summary": "pegar todos os filmes",
+            "description" : "metodo para listar todos os filmes",
+            "tags" : ["comedia"],
+            "parameters":[
+                {
+                "in": "query",
+                "name": "o nome do filme",
+                "description": "nome do filme",
+                "required":"true"
+                }
+            ],
+            "responses":{
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "delete":{
+            "summary": "pegar todos os filmes",
+            "description" : "metodo para listar todos os filmes",
+            "tags" : ["comedia"],
+            "parameters":[
+                {
+                "in": "query",
+                "name": "o nome do filme",
+                "description": "nome do filme",
+                "required":"true"
+                }
+            ],
+            "responses":{
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "post": {
+            "summary": "Cadastro de filmes de comedia",
+            "description": "essa rota edita a categoria comedia",
+            "tags": ["comedia"],
+            "requestBody":{
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/categorias"
+                        },
+                        "examples" :{
+                            "filmes" : {
+                                "value": {
+                                    "name": "o nome do filme",
+                                    "id": "1",
+                                    "ano": "1888"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses" : {
+                "401": {
+                    "description" : "Unauthorized"
+                },
+                "400" : {
+                    "description": "filme ja existe"
+                },
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "put": {
+            "summary": "Cadastro de categorias",
+            "description": "essa rota cadastra novas categorias",
+            "tags": ["comedia"],
+            "requestBody":{
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/categorias"
+                        },
+                        "examples" :{
+                            "filmes" : {
+                                "value": {
+                                    "name": "o nome do filme",
+                                    "id": "1",
+                                    "ano": "1888"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "responses" : {
+                "401": {
+                    "description" : "Unauthorized"
+                },
+                "400" : {
+                    "description": "filmme ja existe"
+                },
+                "200": {
+                    "description": "ok",
+                    "content": {
+                        "application/json" :{
+                            "schemma": {
+                                "type":"object" ,
+                                "$ref": "#/components/schemas/categorias"
+                                
+                            }
+                        }
+                    }
                 }
             }
         }
